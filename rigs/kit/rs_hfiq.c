@@ -85,7 +85,8 @@ static int rshfiq_open(RIG *rig)
     //Make a few attempts at getting the version string just in case the RS-HFIQ has to catch up first.
     retval = -RIG_ETIMEOUT;
 
-    for (int init_retry_count = 0; (init_retry_count < RSHFIQ_INIT_RETRY)
+    int init_retry_count;
+    for (init_retry_count = 0; (init_retry_count < RSHFIQ_INIT_RETRY)
             && (retval == -RIG_ETIMEOUT); init_retry_count++)
     {
         rig_flush(&rig->state.rigport);
